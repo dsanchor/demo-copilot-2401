@@ -11,7 +11,7 @@ public class HelloWorldController {
     @GetMapping("/hello")
     public String hello() {
         System.out.println("Entrada: /hello");
-        String output = "Hola, mundo!";
+        String output = "Hola, CTTI!";
         System.out.println("Salida: " + output);
         return output;
     }
