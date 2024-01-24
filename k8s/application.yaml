@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo2401-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo2401
+  template:
+    metadata:
+      labels:
+        app: demo2401
+    spec:
+      containers:
+        - name: demo2401
+          image: ghcr.io/dsanchor/demo-copilot-2401/demo2401:#IMAGE_TAG#
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo2401-service
+spec:
+  selector:
+    app: demo2401
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
